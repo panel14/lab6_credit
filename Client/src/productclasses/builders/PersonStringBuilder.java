@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Locale;
 
 /**
- * class for building person
+ * class for building person string
  */
 public class PersonStringBuilder {
     /**
@@ -28,7 +28,7 @@ public class PersonStringBuilder {
     }
 
     /**
-     * main method for build
+     * main method for build person string
      * @param scannable
      * @param printable
      * @return
@@ -68,7 +68,7 @@ public class PersonStringBuilder {
     }
 
     /**
-     * name
+     * passportId
      * @param scannable
      * @param printable
      * @throws IOException

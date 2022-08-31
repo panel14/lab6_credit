@@ -3,7 +3,6 @@ package utils;
 import collection.MyArrayList;
 import exceptions.MyException;
 import io.Scannable;
-import io.ServerPrint;
 import productclasses.Person;
 import productclasses.Product;
 import productclasses.builders.PersonBuilder;
@@ -50,7 +49,7 @@ public class CommandManager {
      * @throws IOException
      * @throws MyException
      */
-    public Command getCommand(Scannable scannable, ServerPrint serverPrint) throws IOException, MyException {
+    public Command getCommand(Scannable scannable) throws IOException, MyException {
         String commandLine = scannable.readLine();
         List<String> words = getWords(commandLine);
         if (words.isEmpty()){
@@ -61,41 +60,41 @@ public class CommandManager {
 
         switch (commandName.toLowerCase(Locale.ROOT)){
             case "info":{
-                return new InfoCommand(myArrayList, serverPrint);
+                return new InfoCommand(myArrayList);
             }
             case "help":{
-                return new HelpCommand(serverPrint);
+                return new HelpCommand();
             }
             case "show":{
-                return new ShowCommand(myArrayList, serverPrint);
+                return new ShowCommand(myArrayList);
             }
             case "exit":{
-                return new ExitCommand(serverPrint);
+                return new ExitCommand();
             }
             case "add":{
                 ProductBuilder productBuilder = new ProductBuilder();
                 Product product = productBuilder.build(scannable);
-                return new AddCommand(myArrayList, product, serverPrint);
+                return new AddCommand(myArrayList, product);
             }
             case "clear":{
-                return new ClearCommand(myArrayList, serverPrint);
+                return new ClearCommand(myArrayList);
             }
             case "remove_by_id":{
                 if (words.size() < 2){
                     throw new MyException("Not enough arguments");
                 }
-                return new RemoveByIdCommand(myArrayList, Long.parseLong(words.get(1)), serverPrint);
+                return new RemoveByIdCommand(myArrayList, Long.parseLong(words.get(1)));
             }
             case "sort":{
-                return new SortCommand(myArrayList, serverPrint);
+                return new SortCommand(myArrayList);
             }
             case "filter_greater_than_owner":{
                 PersonBuilder personBuilder = new PersonBuilder();
                 Person person = personBuilder.build(scannable);
-                return new FilterGreaterThanOwnerCommand(person, myArrayList, serverPrint);
+                return new FilterGreaterThanOwnerCommand(person, myArrayList);
             }
             case "save":{
-                return new SaveCommand(myArrayList, serverPrint);
+                return new SaveCommand(myArrayList);
             }
             case "insert_at":{
                 if (words.size() < 2){
@@ -104,7 +103,7 @@ public class CommandManager {
                 int index = Integer.parseInt(words.get(1));
                 ProductBuilder productBuilder = new ProductBuilder();
                 Product product = productBuilder.build(scannable);
-                return new InsertAtCommand(product, index, myArrayList, serverPrint);
+                return new InsertAtCommand(product, index, myArrayList);
             }
             case "update":{
                 if (words.size() < 2){
@@ -113,26 +112,26 @@ public class CommandManager {
                 long id = Long.parseLong(words.get(1));
                 ProductBuilder productBuilder = new ProductBuilder();
                 Product product = productBuilder.build(scannable);
-                return new UpdateCommand(myArrayList, id, product, serverPrint);
+                return new UpdateCommand(myArrayList, id, product);
             }
             case "add_if_min":{
                 ProductBuilder productBuilder = new ProductBuilder();
                 Product product = productBuilder.build(scannable);
-                return new AddIfMinCommand(myArrayList, product, serverPrint);
+                return new AddIfMinCommand(myArrayList, product);
             }
             case "remove_all_by_owner":{
                 PersonBuilder personBuilder = new PersonBuilder();
                 Person owner = personBuilder.build(scannable);
-                return new RemoveAllByOwnerCommand(myArrayList, owner, serverPrint);
+                return new RemoveAllByOwnerCommand(myArrayList, owner);
             }
             case "max_by_unit_of_measure":{
-                return new MaxByUnitOfMeasureCommand(myArrayList, serverPrint);
+                return new MaxByUnitOfMeasureCommand(myArrayList);
             }
             case "execute_script":{
                 if (words.size() < 2){
                     throw new MyException("Not enough arguments");
                 }
-                return new ExecuteScriptCommand(myArrayList, words.get(1), serverPrint);
+                return new ExecuteScriptCommand(myArrayList, words.get(1));
             }
             default:
                 throw new MyException("No such command");

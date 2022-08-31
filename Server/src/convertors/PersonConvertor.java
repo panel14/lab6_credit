@@ -7,6 +7,9 @@ import productclasses.Person;
 
 import java.util.Locale;
 
+/**
+ * class for converting person-string to person class
+ */
 public class PersonConvertor {
     public static Person convert(String string) throws MyException {
         String[] args = string.split(";");

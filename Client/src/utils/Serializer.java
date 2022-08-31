@@ -2,6 +2,9 @@ package utils;
 
 import java.io.*;
 
+/**
+ * class for serializing requests and responses
+ */
 public class Serializer {
 
     public static byte[] serialize (Object command) throws IOException {

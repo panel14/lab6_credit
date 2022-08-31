@@ -13,5 +13,5 @@ public interface Command {
      * @throws IOException
      * @throws MyException
      */
-    void execute() throws IOException, MyException, MyException;
+    String execute() throws IOException, MyException, MyException;
 }

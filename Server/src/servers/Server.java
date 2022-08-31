@@ -17,6 +17,9 @@ import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * main server class
+ */
 public class Server {
 
     private static final int PORT = 8888;
@@ -35,7 +38,9 @@ public class Server {
         while (true) {
             try {
                 Request request = scan.readRequest();
-                CommandFactory.buildCommand(request, myArrayList, send).execute();
+                String responseStr = CommandFactory.buildCommand(request, myArrayList).execute();
+                Response response = new Response(responseStr);
+                send.print(response);
             } catch (ClassNotFoundException e) {
                 System.out.println("Ops!");
             }

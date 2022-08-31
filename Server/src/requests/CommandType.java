@@ -1,5 +1,8 @@
 package requests;
 
+/**
+ * enum - all kinds of commands
+ */
 public enum CommandType {
     ADD,
     ADD_IF_MIN,

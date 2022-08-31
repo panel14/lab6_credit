@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.Random;
 
 /**
- * Class for build product
+ * Class for build product string
  */
 public class ProductStringBuilder {
     private boolean isConsole;

@@ -2,10 +2,7 @@ package сommands;
 
 import collection.MyArrayList;
 import exceptions.MyException;
-import io.Printable;
-import io.ServerPrint;
 import productclasses.Product;
-import response.Response;
 
 import java.io.IOException;
 
@@ -17,7 +14,6 @@ public class UpdateCommand implements Command{
     private final MyArrayList<Product> myArrayList;
     private final long id;
     private final Product product;
-    private final ServerPrint serverPrint;
 
     /**
      * constructor
@@ -25,21 +21,22 @@ public class UpdateCommand implements Command{
      * @param id
      * @param product
      */
-    public UpdateCommand(MyArrayList<Product> myArrayList, long id, Product product, ServerPrint serverPrint) {
+    public UpdateCommand(MyArrayList<Product> myArrayList, long id, Product product) {
         this.myArrayList = myArrayList;
         this.id = id;
         this.product = product;
-        this.serverPrint = serverPrint;
     }
 
     @Override
-    public void execute() throws IOException, MyException {
+    public String execute() throws IOException, MyException {
+        String response = "";
         if (myArrayList.removeIf(product1 -> product1.getId() == id))
-            serverPrint.print(new Response("collection was update"));
+            response = "Collection was update";
         else
-            serverPrint.print(new Response("nothing to update"));
+            response = "Nothing to update";
         product.setId(id);
         myArrayList.add(product);
+        return response;
 
     }
 }

@@ -1,20 +1,33 @@
 package service;
 
+import exceptions.MyException;
 import io.Printable;
 import io.Scannable;
 import productclasses.builders.PersonStringBuilder;
 import productclasses.builders.ProductStringBuilder;
 import requests.CommandType;
 import requests.Request;
-import exceptions.MyException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * class for making requests for server
+ */
 public class RequestManager {
 
+    /**
+     * creating a requests
+     * @param scannable
+     * @param printable
+     * @param isConsole - is console input
+     * @return
+     * @throws IOException
+     * @throws MyException
+     */
     public static Request getRequest(Scannable scannable, Printable printable, boolean isConsole)
             throws IOException, MyException {
 

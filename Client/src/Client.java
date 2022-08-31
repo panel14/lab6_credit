@@ -4,14 +4,20 @@ import io.ClientScan;
 import io.ConsolePrint;
 import io.ConsoleScan;
 import requests.CommandType;
-import requests.Request;;
+import requests.Request;
 import service.RequestManager;
+
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.nio.channels.SocketChannel;
 
+;
+
+/**
+ * main client class
+ */
 public class Client {
 
     private static final String LOCALHOST = "localhost";
@@ -45,7 +51,6 @@ public class Client {
                     System.exit(0);
                 }
                 String answer = clientScan.readString();
-
                 consolePrint.println(answer);
             }
             catch (MyException | ClassNotFoundException e) {
@@ -54,6 +59,10 @@ public class Client {
         }
     }
 
+    /**
+     * main servers configurations
+     * @throws IOException
+     */
     public static void configure() throws IOException {
         SocketAddress address = new InetSocketAddress(LOCALHOST, PORT);
         socketChannel = SocketChannel.open();

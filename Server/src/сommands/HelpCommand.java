@@ -1,8 +1,5 @@
 package сommands;
 
-import io.ServerPrint;
-import response.Response;
-
 import java.io.IOException;
 
 /**
@@ -10,17 +7,9 @@ import java.io.IOException;
  */
 public class HelpCommand implements Command {
 
-    private final ServerPrint serverPrint;
-    /**
-     * constructor
-     */
-    public HelpCommand(ServerPrint serverPrint) {
-        this.serverPrint = serverPrint;
-    }
-
     @Override
-    public void execute() throws IOException {
-        serverPrint.print(new Response("help : вывести справку по доступным командам\n" +
+    public String execute() throws IOException {
+        return "help : вывести справку по доступным командам\n" +
                 "info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n" +
                 "show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
                 "add {element} : добавить новый элемент в коллекцию\n" +
@@ -35,6 +24,6 @@ public class HelpCommand implements Command {
                 "sort : отсортировать коллекцию в естественном порядке\n" +
                 "remove_all_by_owner owner : удалить из коллекции все элементы, значение поля owner которого эквивалентно заданному\n" +
                 "max_by_unit_of_measure : вывести любой объект из коллекции, значение поля unitOfMeasure которого является максимальным\n" +
-                "filter_greater_than_owner owner : вывести элементы, значение поля owner которых больше заданного"));
+                "filter_greater_than_owner owner : вывести элементы, значение поля owner которых больше заданного";
     }
 }

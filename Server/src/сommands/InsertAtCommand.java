@@ -2,9 +2,7 @@ package сommands;
 
 import collection.MyArrayList;
 import exceptions.MyException;
-import io.ServerPrint;
 import productclasses.Product;
-import response.Response;
 
 import java.io.IOException;
 
@@ -16,7 +14,6 @@ public class InsertAtCommand implements Command{
     private final Product product;
     private final int index;
     private final MyArrayList<Product> myArrayList;
-    private final ServerPrint serverPrint;
 
     /**
      * constructor
@@ -24,17 +21,16 @@ public class InsertAtCommand implements Command{
      * @param index
      * @param myArrayList
      */
-    public InsertAtCommand(Product product, int index, MyArrayList<Product> myArrayList, ServerPrint serverPrint) {
+    public InsertAtCommand(Product product, int index, MyArrayList<Product> myArrayList) {
         this.product = product;
         this.index = index;
         this.myArrayList = myArrayList;
-        this.serverPrint = serverPrint;
     }
 
     @Override
-    public void execute() throws IOException, MyException {
+    public String execute() throws IOException, MyException {
         if (index >= 0 && index <= myArrayList.size() )
         myArrayList.add(index, product);
-        serverPrint.print(new Response("Product was added"));
+        return "Product was added";
     }
 }

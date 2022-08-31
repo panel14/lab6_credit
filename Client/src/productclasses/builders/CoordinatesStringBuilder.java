@@ -7,13 +7,13 @@ import io.Scannable;
 import java.io.IOException;
 
 /**
- * Class for build coordinates-
+ * Class for build coordinates string to requests
  */
 public class CoordinatesStringBuilder {
     /**
      * check for console
      */
-    private boolean isConsole;
+    private final boolean isConsole;
 
     /**
      * constructor
@@ -26,7 +26,7 @@ public class CoordinatesStringBuilder {
     /**
      * @param scannable scannable
      * @param printable printable
-     * @return coordinates
+     * @return coordinates string
      * @throws MyException
      * @throws IOException
      */
@@ -37,7 +37,7 @@ public class CoordinatesStringBuilder {
     }
 
     /**
-     * build x coordinates
+     * build x coordinates string
      * @param scannable scannable
      * @param printable printable
      * @throws IOException
@@ -69,7 +69,7 @@ public class CoordinatesStringBuilder {
     }
 
     /**
-     * build y coordinate
+     * build y coordinate string
      * @param scannable scannable
      * @param printable printable
      * @throws IOException

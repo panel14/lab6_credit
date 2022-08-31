@@ -9,6 +9,9 @@ import productclasses.UnitOfMeasure;
 import java.time.ZonedDateTime;
 import java.util.Locale;
 
+/**
+ * class for converting product-string to product class
+ */
 public class ProductConvertor {
 
     public static Product convert(String string) throws MyException {

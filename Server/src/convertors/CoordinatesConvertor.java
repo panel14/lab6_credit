@@ -3,6 +3,9 @@ package convertors;
 import exceptions.MyException;
 import productclasses.Coordinates;
 
+/**
+ * class for converting coordinates-string to coordinates class
+ */
 public class CoordinatesConvertor {
 
     public static Coordinates convert(String[] args) throws MyException {
